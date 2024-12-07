@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Change to the script's directory
+cd "$(dirname "$0")" || exit
+
+
 # Check if Python is installed
 if ! command -v python3 &> /dev/null; then
     echo "Python is not installed. Please install Python first."
