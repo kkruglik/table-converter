@@ -1,0 +1,35 @@
+[project]
+name = "table-converter"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "kirill-kruglikov", email = "kirillkruglikov@gmail.com"},
+    {name = "kirill-kruglikov", email = "kirillkruglikov@outlook.com"},
+    {name = "kirill-kruglikov", email = "kirill.k@xperience.lv"},
+]
+dependencies = [
+    "pandas>=2.2.3",
+    "click>=8.1.7",
+    "pydantic>=2.9.2",
+    "python-dotenv>=1.0.1",
+    "openpyxl>=3.1.5",
+    "PyYAML>=6.0.2",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.pdm]
+distribution = true
+
+[project.scripts]
+table-converter = "table_converter.main:main"
+
+

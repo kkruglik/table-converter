@@ -1,0 +1,23 @@
+version: 1
+formatters:
+  standard:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  detailed:
+    format: '[%(asctime)s.%(msecs)03d] %(levelname)s [%(module)s.%(funcName)s(%(lineno)d)] - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: detailed
+    level: INFO
+  file:
+    class: logging.FileHandler
+    formatter: detailed
+    filename: ${log_filename}
+    level: DEBUG
+loggers:
+  table_converter:
+    level: DEBUG
+    handlers:
+      - console
+      - file
+    propagate: false
