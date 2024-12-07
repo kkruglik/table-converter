@@ -3,9 +3,7 @@ name = "table-converter"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
-    {name = "kirill-kruglikov", email = "kirillkruglikov@gmail.com"},
     {name = "kirill-kruglikov", email = "kirillkruglikov@outlook.com"},
-    {name = "kirill-kruglikov", email = "kirill.k@xperience.lv"},
 ]
 dependencies = [
     "pandas>=2.2.3",
@@ -15,7 +13,7 @@ dependencies = [
     "openpyxl>=3.1.5",
     "PyYAML>=6.0.2",
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
 
