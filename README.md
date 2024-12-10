@@ -15,7 +15,7 @@ brew install python@3.11
 
 #### Using Python Installer
 1. Visit https://www.python.org/downloads/
-2. Download the latest Python 3.11 installer
+2. Download the latest Python installer
 3. Open the downloaded .pkg file
 4. Follow the installation wizard
 
