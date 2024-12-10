@@ -48,4 +48,4 @@ With first run script will create a working directory like this:
 ### 4. Copy the documents you want to process to the `data/input` folder
 and run the script again.
 
-After the script finishes, the result will be in the folder `data/output/date_and_time` the script was run.
+After the script finished, the result will be in the folder `data/output/date_and_time` the script was run.
