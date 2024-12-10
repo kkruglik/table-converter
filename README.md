@@ -37,7 +37,7 @@ or [download](https://github.com/kkruglik/table-converter/blob/main/run.sh) from
 * put the sctipt in it
 * run script with double click
 
-With first script will create a working directory like this:
+With first run script will create a working directory like this:
 ```
 .
 └── data
