@@ -31,7 +31,21 @@ curl -O https://raw.githubusercontent.com/kkruglik/table-converter/refs/heads/ma
 chmod +x run.sh
 ```
 
-### 3. Run the Tool
-```bash
-./run.sh
+or [download](https://github.com/kkruglik/table-converter/blob/main/run.sh) from repository
+
+### 3. Create a working directory in Mac
+* put the sctipt in it
+* run script with double click
+
+With first script will create a working directory like this:
 ```
+.
+└── data
+    ├── input
+    └── output
+```
+
+### 4. Copy the documents you want to process to the `data/input` folder
+and run the script again.
+
+After the script finishes, the result will be in the folder `data/output/date_and_time` the script was run.
