@@ -186,7 +186,7 @@ class BankStatementProcessor:
         logger.debug(f"Reading file: {statement_filename}")
         if statement_filename.suffix == ".csv":
             logger.debug("Detected CSV file format")
-            df = pd.read_csv(statement_filename)
+            df = pd.read_csv(statement_filename, sep=';')
         elif statement_filename.suffix == ".xlsx":
             logger.debug("Detected Excel file format")
             skip_rows = find_skiprows(statement_filename, {"Date", "Doc N", "Loro Account"})
