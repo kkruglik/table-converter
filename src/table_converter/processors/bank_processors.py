@@ -64,7 +64,7 @@ class TBCProcessor(BankProcessor):
         data.columns = [self.normalize_string(i) for i in data.columns]
         df = self._apply_dtypes(data)
         df = self._apply_features(df)
-        df = df.rename(self._target_cols, axis=1)
+        df = df.rename(columns=self._target_cols)
         df = df[list(self._target_cols.values())]
         return df
 
@@ -101,7 +101,7 @@ class BOGProcessor(BankProcessor):
         self._target_cols = {
             "date": "Дата",
             "doc_n": "ID транзакции",
-            "nomination": "Комментарии",
+            "entry_comment": "Комментарии",
             "volume_type": "Приход / расход",
             "volume": "Сумма",
             "recipient_name": "Счёт получателя",
@@ -114,7 +114,7 @@ class BOGProcessor(BankProcessor):
 
     def _apply_features(self, df) -> pd.DataFrame:
         df["is_foreign_exchange"] = df["entry_comment"].str.contains("Foreign Exchange")
-        df["volume_type"] = np.where(df.debit.isna(), "Расход", "Приход")
+        df["volume_type"] = np.where(df.amount < 0, "Расход", "Приход")
         df["volume"] = df["credit"].fillna(df["debit"])
         df = df.sort_values(by=["date"], ascending=True)
         df["nomination"] = df["nomination"].str.replace("Conversion", "", regex=False)
@@ -131,7 +131,7 @@ class BOGProcessor(BankProcessor):
             df["currency"] = currency
         else:
             logger.warning("No currency passed in BOGProcessor")
-        df = df.rename(self._target_cols, axis=1)
+        df = df.rename(columns=self._target_cols)
         df = df[list(self._target_cols.values())]
         return df
 
@@ -236,7 +236,7 @@ class BankStatementProcessor:
         try:
             logger.debug("Starting post-processing of output statement")
             logger.debug("Sorting values by date and bank")
-            self.output_statement = self.output_statement.sort_values(by=["Дата", "bank"], ascending=[True, True])
+            self.output_statement = self.output_statement.sort_values(by=["Дата", "bank", "ID транзакции", "Приход / расход"], ascending=[True, True, True, False])
 
             logger.debug("Formatting date column")
             self.output_statement["Дата"] = self.output_statement["Дата"].dt.strftime("%d.%m.%Y")
